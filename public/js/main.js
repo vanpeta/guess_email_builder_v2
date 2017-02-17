@@ -2,7 +2,7 @@ console.log('loaded');
 
 function handleImage (image) {
 	console.log (image);
-	var image = new FormData ();
+
 	$.ajax({
 		url: '/upload',
 		method: 'POST',
