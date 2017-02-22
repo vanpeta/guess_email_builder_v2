@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var routes = require('./config/routes');
+require('dotenv').load();
 
 var app = express();
 //view engine setup
@@ -8,7 +9,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,6 +21,10 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
