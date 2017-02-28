@@ -29,36 +29,76 @@ function getInfo (req, res, next) {
 	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 	c.connect(ftpConfig);
 	c.on('ready', function () {
-		c.cwd('/43877/GuessUS/'+brand+'/Emails/'+year+'/'+'month'+'/'+'day', function (err, currentDir) {
+		c.cwd('/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day, function (err, currentDir) {
 			if (err) {
+				console.log('inside 1st cwd error')
 				if (err.code == 550) {
+					console.log('inside 1st cwd error 505')
 					c.mkdir('/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day, true, function (err) {
 						if (err) {
-							console.log('error creando');
-							throw err;
+							console.log('inside mkdir error')
+							return res.json(err);
 						}
-						console.log('mkdir no err');
 						c.cwd('/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day, function (err, currentDir) {
 							if (err) {
-								console.log('error entrando');
-								throw err;
+								console.log('inside 2nd cwd error')
+								return res.json(err);
 							}
 							c.list(function (err, list) {
-								if (err) throw err;
-								console.log(list);
-								res.json({res: list})
-								c.end();
-							});
-						});
-					});
+								if (err) {
+									console.log('inside list after mkdir and cwd to it')
+									return res.json(err);
+								}
+								return res.json({res: list});
+							})
+						})
+					})
 				}
+				else 
+					return res.json(err);
 			}
-			c.list(function (err, list) {
-				if (err) throw err;
+			else c.list(function (err, list) {
+				if (err) {
+					console.log('inside list without mkdir')
+					return res.json(err);
+				}
 				console.log(list);
 				res.json({res: list})
 				c.end();
 			});
+			// if (err.code !== 550) {
+			// 	console.log('no 550 error')
+			// 	throw err;
+			// }
+			// else if (err.code == 550) {
+			// 	return (new Promise (function (resolve, reject) {
+			// 		c.mkdir('/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day, true, function (err) {
+			// 			console.log('inside 550')
+			// 			if (err) throw err;					
+			// 			resolve (c.cwd('/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day, function (err, currentDir) {
+			// 				console.log('inside 550 entrando')
+			// 				if (err) {
+			// 					console.log('error entrando');
+			// 					throw err;
+			// 				}
+			// 			}))
+			// 		});
+			// 	})
+			// 	.then(
+			// 		c.list(function (err, list) {
+			// 			if (err) throw err;
+			// 			console.log(list);
+			// 			c.end();
+			// 			res.json({res: list});
+			// 		})
+			// 	));
+			// }
+			// else c.list(function (err, list) {
+			// 	if (err) throw err;
+			// 	console.log(list);
+			// 	res.json({res: list})
+			// 	c.end();
+			// });
 		});
 	});
 }
