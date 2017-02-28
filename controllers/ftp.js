@@ -70,6 +70,7 @@ function getInfo (req, res, next) {
 	});
 }
 
+
 function postImage (req, res, next) {
 	res.json({res: "working"})
 }
