@@ -8,9 +8,9 @@ router.get('/', function (req, res, next) {
 })
 
 /*Connect to ftp */
-router.get('/connect', ftpController.getInfo);
+router.post('/connect', ftpController.getInfo);
 /* Upload to GUESS server */
-router.post('/upload', ftpController.postImage);
+// router.post('/upload', ftpController.postImage);
 
 /* Redirect all other routes to the home page */
 // router.get('/*', function(req, res, next) {

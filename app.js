@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var routes = require('./config/routes');
+var bodyParser = require('body-parser')
 require('dotenv').load();
 
 var app = express();
@@ -12,6 +13,8 @@ app.set('view engine', 'ejs');
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json({limit: 1024*1024*20}));
+app.use(bodyParser.urlencoded({extended: true, limit: 1024*1024*20}));
 
 app.use('/', routes);
 
