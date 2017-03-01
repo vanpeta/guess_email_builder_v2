@@ -17,11 +17,11 @@ function convertTo64 (image) {
 
 function getInfo (image) {
 	convertTo64(image).then(function (imageData){
-		console.log(imageData)
 		var datePicked = calendar.datepicker('getDate');
 		var year = datePicked.getFullYear();
 		var month = datePicked.toLocaleString('en-us', {month: 'long'});
 		var monthNumber = datePicked.getMonth()+1;
+		var imageName = 'test';
 		if (monthNumber < 10) {
 			monthNumber = '0'+monthNumber
 		}
@@ -39,12 +39,13 @@ function getInfo (image) {
 		$.ajax({
 			url: '/connect',
 			type: 'POST',
-			data: { 
+			data: {
 				image: imageData,
 				brand: brand,
 				year: year,
 				month: month,
-				day: day
+				day: day,
+				imageName: imageName
 			},
 			success: function (res) {
 				console.log(res);
