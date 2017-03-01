@@ -1,6 +1,20 @@
 var checkboxes = $('.brands');
 var calendar = $("#datepicker");
 calendar.datepicker();
+var brand;
+
+function validator (image) {
+	for (var i = 0; i < checkboxes.length; i++) {
+		if (checkboxes[i].checked) {
+			brand = checkboxes[i].value;
+		}
+	}
+	if (brand == undefined) {
+		return alert('Choose one brand');
+	}
+	getInfo (image);
+}
+
 
 function convertTo64 (image) {
 	return new Promise(function (resolve, reject) {
@@ -14,6 +28,12 @@ function convertTo64 (image) {
 	})
 }
 
+checkboxes.on('click', function () {
+	for (var i = 0; i < checkboxes.length; i++) {
+		checkboxes[i].checked = false;
+	}
+	this.checked = 'checked';
+})
 
 function getInfo (image) {
 	convertTo64(image).then(function (imageData){
@@ -21,7 +41,7 @@ function getInfo (image) {
 		var year = datePicked.getFullYear();
 		var month = datePicked.toLocaleString('en-us', {month: 'long'});
 		var monthNumber = datePicked.getMonth()+1;
-		var imageName = 'test';
+		var imageName = $('#image').val().split('\\').pop().replace(/\s+/g, '_');
 		if (monthNumber < 10) {
 			monthNumber = '0'+monthNumber
 		}
@@ -30,12 +50,6 @@ function getInfo (image) {
 			day = '0'+ day;
 		}
 		day = monthNumber + '.' + day;
-		var brand;
-		for (var i = 0; i < checkboxes.length; i++) {
-			if (checkboxes[i].checked) {
-				brand = checkboxes[i].value;
-			}
-		}
 		$.ajax({
 			url: '/connect',
 			type: 'POST',

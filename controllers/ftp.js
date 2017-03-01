@@ -1,6 +1,5 @@
 require('dotenv').load();
 var Client = require('ftp');
-var base64Decode = require('base64-stream').decode;
 var sslRootCAs = require('ssl-root-cas/latest');
 
 
@@ -64,7 +63,7 @@ function getInfo (req, res, next) {
 										console.log('inside list after mkdir and cwd to it')
 										return res.json(err);
 									}
-									return res.json({res: list});
+									return res.json({filesInFolder: list, url:"http://content.guess.com/GuessUS/GuessKids/Emails/2017/February/02.01/"+imageName});
 								})
 							})
 						})
@@ -85,8 +84,7 @@ function getInfo (req, res, next) {
 						console.log('inside list without mkdir')
 						return res.json(err);
 					}
-					console.log(list);
-					res.json({res: list})
+					res.json({filesInFolder: list, url:"http://content.guess.com/GuessUS/GuessKids/Emails/2017/February/02.01/"+imageName})
 					c.end();
 					});
 				})
