@@ -5,33 +5,50 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4" />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="autolink" content="no" />
+		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	</head>
 	<body>
-		<div id="datepicker">
-		</div>
-		<div>
-			<input class="brands" type="checkbox" id="Guess" value="Guess" />
-			<label for="Guess">Guess</label>
-		</div>
-		<div>
-			<input class="brands" type="checkbox" id="Guess_Factory" value="GuessFactory" />
-			<label for="Guess_Factory">Guess Factory</label>
-		</div>
-		<div>
-			<input class="brands" type="checkbox" id="G_by_Guess" value="GbyGuess" />
-			<label for="G_by_Guess">G by Guess</label>
-		</div>
-		<div>
-			<input class="brands" type="checkbox" id="Guess_Kids" value="GuessKids" />
-			<label for="Guess_Kids">Guess Kids</label>
-		</div>
-		<div>
-			<input class="brands" type="checkbox" id="Marciano" value="Marciano" />
-			<label for="Marciano">Marciano</label>
-		</div>
-		<div>
-  	<input type="file" id="image" onchange="validator(this.files)"/>
+		<div id="panel">
+			<div class="settings">
+				<div id="datepicker">
+				</div>
+				<div>
+					<input class="brands" type="checkbox" id="Guess" value="Guess" />
+					<label for="Guess">Guess</label>
+				</div>
+				<div>
+					<input class="brands" type="checkbox" id="Guess_Factory" value="GuessFactory" />
+					<label for="Guess_Factory">Guess Factory</label>
+				</div>
+				<div>
+					<input class="brands" type="checkbox" id="G_by_Guess" value="GbyGuess" />
+					<label for="G_by_Guess">G by Guess</label>
+				</div>
+				<div>
+					<input class="brands" type="checkbox" id="Guess_Kids" value="GuessKids" />
+					<label for="Guess_Kids">Guess Kids</label>
+				</div>
+				<div>
+					<input class="brands" type="checkbox" id="Marciano" value="Marciano" />
+					<label for="Marciano">Marciano</label>
+				</div>
+				<div id="row">
+					<label for="numImages">Number of Images in this row</label>
+					<input type="number" id="numImages" />					
+				</div>
+				<div class="rowSettings">
+				</div>
+				<div id="newRow">
+					<button>Add a new row.</button>
+				</div>
+				<div id="download">
+					<button>I'm done. Download code.</button>
+				</div>
+	  	</div>
+  	</div>
+  	<div id="preview">
+  		<div class="images"></div>
   	</div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

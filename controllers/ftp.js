@@ -33,6 +33,7 @@ function getInfo (req, res, next) {
 	var imageName = req.body.imageName;
 	console.log(req.body.imageName);
 	var path = '/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day;
+	var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
 	var c = new Client();
 	//next line needs to be removed for security and find out how to do it without it. You will the next error { [Error: unable to verify the first certificate] code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' } 
 	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
@@ -63,7 +64,7 @@ function getInfo (req, res, next) {
 										console.log('inside list after mkdir and cwd to it')
 										return res.json(err);
 									}
-									return res.json({filesInFolder: list, url:"http://content.guess.com/GuessUS/GuessKids/Emails/2017/February/02.01/"+imageName});
+									return res.json({filesInFolder: list, url: url});
 								})
 							})
 						})
@@ -84,7 +85,7 @@ function getInfo (req, res, next) {
 						console.log('inside list without mkdir')
 						return res.json(err);
 					}
-					res.json({filesInFolder: list, url:"http://content.guess.com/GuessUS/GuessKids/Emails/2017/February/02.01/"+imageName})
+					res.json({filesInFolder: list, url: url})
 					c.end();
 					});
 				})

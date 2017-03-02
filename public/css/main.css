@@ -1,0 +1,21 @@
+body{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+#panel {
+	display: inline-block;
+	width: 49%;
+}
+.settings {
+	text-align: left
+}
+#preview {
+	display: inline-block;
+	width: 49%;
+	background-color: red;
+	vertical-align: top;
+}
+#newRow, #download {
+	display: inline-block;
+}
