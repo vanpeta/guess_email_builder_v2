@@ -1,7 +1,8 @@
 var checkboxes = $('.brands');
 var calendar = $("#datepicker");
 var brand;
-var rowNum =1;
+var counter = 1;
+var rowNum ='row'+counter;
 var url = [];
 var alt = [];
 var href = [];
@@ -70,7 +71,10 @@ $('#newRowButton').on('click', function () {
 	numImages = null;
 	$('#numImages').val('');
 	$('.rowSettings').empty();
-	rowNum++
+	$('.images').append(contentRowAndTable+closeContentRowAndTable);
+	counter++
+	rowNum = 'row'+counter;
+	contentRowAndTable = '<tr class="'+rowNum+'"><td class="content" align="left"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"><tr>';
 });
 //Making sure one brand is chosen and triggering send image to backend
 function validator (image) {
@@ -117,7 +121,11 @@ function sendData (image, id) {
 				id = id.slice(-1);
 				url[id] = res.url;
 				addData(id)
-				addRow (id);
+				counter--
+				rowNum = 'row'+counter;
+				addRow (id, rowNum);
+				counter++
+				rowNum = 'row'+counter;
 			}
 		})
 	})
@@ -135,22 +143,22 @@ function convertTo64 (image) {
 	})
 };
 
-function addRow (numRows) {
-	console.log (numRows);
+function addRow (numRows, rowNum) {
+	console.log (numRows, rowNum);
 	switch (numRows) {
 		case '0':
-			$('.images').html(row1images);
+			$('.images > .'+rowNum).html(row1images);
 			break;
 		case '1':
-			$('.images').html(row2images);
+			$('.images > .'+rowNum).html(row2images);
 			break;
 		case '2':
-			$('.images').html(row3images);
+			$('.images > .'+rowNum).html(row3images);
 			break;
 		case '3':
-			$('.images').html(row4images);
+			$('.images > .'+rowNum).html(row4images);
 	}
-}
+};
 
 
 
