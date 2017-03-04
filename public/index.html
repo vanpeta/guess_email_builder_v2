@@ -9,46 +9,60 @@
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	</head>
 	<body>
+		<h1>GUESS email builder</h1>
 		<div id="panel">
 			<div class="settings">
-				<div id="datepicker">
+				<div class="brands-section">
+					<h3>Choose the brand</h3>
+					<div class="brand-checkbox">
+						<input class="brands" type="checkbox" id="Guess" value="Guess" />
+						<label for="Guess">Guess</label>
+					</div>
+					<div class="brand-checkbox">
+						<input class="brands" type="checkbox" id="Guess_Factory" value="GuessFactory" />
+						<label for="Guess_Factory">Guess Factory</label>
+					</div>
+					<div class="brand-checkbox">
+						<input class="brands" type="checkbox" id="G_by_Guess" value="GbyGuess" />
+						<label for="G_by_Guess">G by Guess</label>
+					</div>
+					<div class="brand-checkbox">
+						<input class="brands" type="checkbox" id="Guess_Kids" value="GuessKids" />
+						<label for="Guess_Kids">Guess Kids</label>
+					</div>
+					<div class="brand-checkbox">
+						<input class="brands" type="checkbox" id="Marciano" value="Marciano" />
+						<label for="Marciano">Marciano</label>
+					</div>
 				</div>
-				<div>
-					<input class="brands" type="checkbox" id="Guess" value="Guess" />
-					<label for="Guess">Guess</label>
+				<div id="calendar" class="hide">
+					<h3>Choose the date</h3>
+					<div id="datepicker">
+					</div>
 				</div>
-				<div>
-					<input class="brands" type="checkbox" id="Guess_Factory" value="GuessFactory" />
-					<label for="Guess_Factory">Guess Factory</label>
-				</div>
-				<div>
-					<input class="brands" type="checkbox" id="G_by_Guess" value="GbyGuess" />
-					<label for="G_by_Guess">G by Guess</label>
-				</div>
-				<div>
-					<input class="brands" type="checkbox" id="Guess_Kids" value="GuessKids" />
-					<label for="Guess_Kids">Guess Kids</label>
-				</div>
-				<div>
-					<input class="brands" type="checkbox" id="Marciano" value="Marciano" />
-					<label for="Marciano">Marciano</label>
-				</div>
-				<div id="row">
+				<div class="rowPicker hide">
+					<h3>New row</h3>
 					<label for="numImages">Number of Images in this row</label>
-					<input type="number" id="numImages" />					
+					<input type="number" id="numImages" />
 				</div>
 				<div class="rowSettings">
 				</div>
-				<div id="newRow">
-					<button id="newRowButton">Add a new row.</button>
-				</div>
-				<div id="download">
-					<button>I'm done. Download code.</button>
+				<div id="buttons" class="hide">
+					<div id="newRowButton" class="button">
+						<button>NEW ROW</button>
+					</div>
+					<div id="download" class="button">
+						<button id="downloadButton">DOWNLOAD HTML</button>
+					</div>
+					<div id="startOver" class="button">
+						<button>NEW EMAIL</button>
+					</div>
 				</div>
 	  	</div>
   	</div>
   	<div id="preview">
-  		<div class="images"></div>
+  		<table class="images">
+  		</table>
   	</div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

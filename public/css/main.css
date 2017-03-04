@@ -2,13 +2,15 @@ body{
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	font-family: GuessFont, 'Century Gothic', Futura, Arial, sans serif;
 }
 #panel {
 	display: inline-block;
 	width: 49%;
 }
 .settings {
-	text-align: left
+	text-align: left;
+	position: fixed;
 }
 #preview {
 	display: inline-block;
@@ -16,6 +18,80 @@ body{
 	background-color: red;
 	vertical-align: top;
 }
-#newRow, #download {
-	display: inline-block;
+.hide {
+	display: none !important;
 }
+.brand-checkbox {
+	width: 100%;
+}
+.brand-checkbox input[type=checkbox] {
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-o-appearance:none;
+	outline: 1px solid #e1e1e1 !important;
+	height: 2vw;
+	width: 2vw;
+	max-width: 25px;
+	max-height: 25px;
+}
+.brand-checkbox input[type=checkbox]:checked {
+	background-image: url('http://content.guess.com/GuessUS/Guess/Emails/2017/January/01.11/checkmark/checkmark.png');
+	background-size: cover;
+}
+.brand-checkbox label{
+	cursor: pointer;
+	vertical-align: top;
+	position: relative;
+	top: 4px;
+}
+button {
+	background: #000000;
+	height: 5vw;
+	letter-spacing: .25em;
+	color: #ffffff;
+	font-size: 1vw;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	max-height: 55px;
+}
+.button {
+	display: inline-block;
+	background: #000000;
+	margin: 1vw;
+	letter-spacing: .25em;
+	color: #ffffff;
+	font-size: 1vw;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	max-height: 55px;
+}
+.rowPicker > input {
+  height: 5vh;
+  width: 5%;
+  background-color: #e1e1e1;
+  border: none;
+  padding-left: 2%;
+  font-size: 1.3vw;
+  letter-spacing: .25em;
+}
+.rowPicker > input:focus, #imageSettings > input:focus {
+	outline: none;
+	background-color: #fcfa80!important;
+}
+#imageSettings > input {
+  background-color: #e1e1e1;
+  border: none;
+  padding-left: 2%;
+  font-size: 1vw;
+  height: 5vh;
+  width: 15%;
+}
+.imageHref, .imageAlt, #imageSettings > label:nth-child(2n+3) {
+	margin-left: 10px;
+}
+
+
+
+

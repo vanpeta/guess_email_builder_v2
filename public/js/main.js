@@ -7,20 +7,29 @@ var url = [];
 var alt = [];
 var href = [];
 //Generating Calendar
-calendar.datepicker();
+calendar.datepicker({
+	onSelect: function (date) {
+		$('.rowPicker').removeClass('hide');
+		$('#buttons').removeClass('hide');
+		$('#calendar').addClass('hide');
+	}
+});
 //Cleaning checkboxes when clicked on them
 checkboxes.on('click', function () {
 	for (var i = 0; i < checkboxes.length; i++) {
 		checkboxes[i].checked = false;
 	}
 	this.checked = 'checked';
+	$('#calendar').removeClass('hide');
+	$('.brands-section').addClass('hide');
 });
 //Grabing # of images per row and generating rowSetting
 var numImages;
 $('#numImages').on('change', function() {
+	$('.rowSettings').empty();
 	numImages = $(this).val();
 	for (var i = 0; i < numImages; i++) {
-		$('.rowSettings').append('<div><lable for="imageAlt'+i+'">Alt</lable><input type="text" class="imageAlt" id="imageAlt'+i+'" value="" /><lable for="imageHref'+i+'">href</lable><input type="text" class="imageHref" id="imageHref'+i+'" value="" /><input type="file" id="image'+i+'" onchange="validator(this)"/></div>');
+		$('.rowSettings').append('<div id="imageSettings"><label for="imageAlt'+i+'">Alt:</label><input type="text" class="imageAlt" id="imageAlt'+i+'" value="" /><label for="imageHref'+i+'">href:</label><input type="text" class="imageHref" id="imageHref'+i+'" value="" /><label for="image'+i+'" class="button">ADD IMAGE</label><input type="file" id="image'+i+'" style="visibility:hidden;" onchange="validator(this)"/></div>');
 	}
 	addEventsAlt ();
 	addEventsHref ();
@@ -54,16 +63,16 @@ function addEventsHref () {
 function addData (i) {
 	switch (i) {
 		case '0':
-			return row1images = contentRowAndTable+'<td width="100%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="582" style="display: block" /></a></td>'+closeContentRowAndTable;
+			return row1images = '<td width="100%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="582" style="display: block" /></a></td>'+closeContentRowAndTable
 		break;
 		case '1':
-			return row2images = contentRowAndTable+'<td width="50%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="291" style="display: block" /></a></td><td width="50%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="291" style="display: block" /></a></td>'+closeContentRowAndTable;
+			return row2images = '<td width="50%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="291" style="display: block" /></a></td><td width="50%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="291" style="display: block" /></a></td>'+closeContentRowAndTable
 		break;
 		case '2':
-			return row3images = contentRowAndTable+'<td width="33.33%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="194" style="display: block" /></a></td>'+closeContentRowAndTable;
+			return row3images = '<td width="33.33%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="194" style="display: block" /></a></td>'+closeContentRowAndTable
 		break;
 		case '3':
-			return row4images = contentRowAndTable+'<td width="25%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[3]+'"><img id="image3" alt="'+alt[3]+'" src="'+url[3]+'" width="145.5" style="display: block" /></a></td>'+closeContentRowAndTable;
+			return row4images = '<td width="25%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[3]+'"><img id="image3" alt="'+alt[3]+'" src="'+url[3]+'" width="145.5" style="display: block" /></a></td>'+closeContentRowAndTable
 		break
 	}
 }
@@ -71,7 +80,7 @@ $('#newRowButton').on('click', function () {
 	numImages = null;
 	$('#numImages').val('');
 	$('.rowSettings').empty();
-	$('.images').append(contentRowAndTable+closeContentRowAndTable);
+	$('.images').append(contentRowAndTable);
 	counter++
 	rowNum = 'row'+counter;
 	contentRowAndTable = '<tr class="'+rowNum+'"><td class="content" align="left"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"><tr>';
@@ -160,7 +169,28 @@ function addRow (numRows, rowNum) {
 	}
 };
 
+function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = $(elId).html();
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/plain';
 
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click(); 
+}
+$('#downloadButton').on('click', function(){
+	downloadInnerHtml('testOne.html', '.images', 'text/html');
+});
+// $('#downloadButton').on('click', function(){
+// 	var fileName='test.html'
+//   var download = $('.images').contents().find('html');
+//   console.log(download);
+//   var link = document.createElement("a");
+//   link.setAttribute("download", fileName);
+//   link.setAttribute("href", "data:text/html;charset=utf-8,"+encodeURIComponent(download.prop('outerHTML')));
+//   link.click();
+//   console.log (download.prop('outerHTML'))
+// });
 
 
 
