@@ -1,3 +1,5 @@
+var calendar = $('#datepicker');
+var checkboxes = $('.brands')
 calendar.datepicker();
 function Email (rows) {
 	this.brand : function () {

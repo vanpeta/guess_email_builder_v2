@@ -34,9 +34,6 @@ $('#numImages').on('change', function() {
 	addEventsAlt ();
 	addEventsHref ();
 });
-//HTML Row Code
-var contentRowAndTable = '<tr class="'+rowNum+'"><td class="content" align="left"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"><tr>';
-var closeContentRowAndTable = '</tr></table></td></tr>';
 var row1images;
 var row2images;
 var row3images;
@@ -63,27 +60,31 @@ function addEventsHref () {
 function addData (i) {
 	switch (i) {
 		case '0':
-			return row1images = '<td width="100%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="582" style="display: block" /></a></td>'+closeContentRowAndTable
+			return row1images = '<td width="100%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="582" style="display: block" /></a></td>'
 		break;
 		case '1':
-			return row2images = '<td width="50%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="291" style="display: block" /></a></td><td width="50%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="291" style="display: block" /></a></td>'+closeContentRowAndTable
+			return row2images = '<td width="50%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="291" style="display: block" /></a></td><td width="50%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="291" style="display: block" /></a></td>'
 		break;
 		case '2':
-			return row3images = '<td width="33.33%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="194" style="display: block" /></a></td>'+closeContentRowAndTable
+			return row3images = '<td width="33.33%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="194" style="display: block" /></a></td>'
 		break;
 		case '3':
-			return row4images = '<td width="25%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[3]+'"><img id="image3" alt="'+alt[3]+'" src="'+url[3]+'" width="145.5" style="display: block" /></a></td>'+closeContentRowAndTable
+			return row4images = '<td width="25%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[3]+'"><img id="image3" alt="'+alt[3]+'" src="'+url[3]+'" width="145.5" style="display: block" /></a></td>'
 		break
 	}
 }
+//HTML Row Code
+var contentRowAndTable = '<tr class="'+rowNum+'"><td><table width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
+
+//Adding new row
 $('#newRowButton').on('click', function () {
 	numImages = null;
 	$('#numImages').val('');
 	$('.rowSettings').empty();
-	$('.images').append(contentRowAndTable);
-	counter++
+	$('.content > tbody:last-child').append(contentRowAndTable);
+	counter++;
 	rowNum = 'row'+counter;
-	contentRowAndTable = '<tr class="'+rowNum+'"><td class="content" align="left"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"><tr>';
+	contentRowAndTable = '<tr class="'+rowNum+'"><td><table width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
 });
 //Making sure one brand is chosen and triggering send image to backend
 function validator (image) {
@@ -153,19 +154,19 @@ function convertTo64 (image) {
 };
 
 function addRow (numRows, rowNum) {
-	console.log (numRows, rowNum);
+	console.log (rowNum, numRows);
 	switch (numRows) {
 		case '0':
-			$('.images > .'+rowNum).html(row1images);
+			$('.content > tbody >.'+rowNum).find('.imagesContainer').html(row1images);
 			break;
 		case '1':
-			$('.images > .'+rowNum).html(row2images);
+			$('.content > tbody >.'+rowNum).find('.imagesContainer').html(row2images);
 			break;
 		case '2':
-			$('.images > .'+rowNum).html(row3images);
+			$('.content > tbody >.'+rowNum).find('.imagesContainer').html(row3images);
 			break;
 		case '3':
-			$('.images > .'+rowNum).html(row4images);
+			$('.content > tbody >.'+rowNum).find('.imagesContainer').html(row4images);
 	}
 };
 
@@ -179,18 +180,9 @@ function downloadInnerHtml(filename, elId, mimeType) {
     link.click(); 
 }
 $('#downloadButton').on('click', function(){
-	downloadInnerHtml('testOne.html', '.images', 'text/html');
+	downloadInnerHtml('testTen.html', '.content', 'text/html');
 });
-// $('#downloadButton').on('click', function(){
-// 	var fileName='test.html'
-//   var download = $('.images').contents().find('html');
-//   console.log(download);
-//   var link = document.createElement("a");
-//   link.setAttribute("download", fileName);
-//   link.setAttribute("href", "data:text/html;charset=utf-8,"+encodeURIComponent(download.prop('outerHTML')));
-//   link.click();
-//   console.log (download.prop('outerHTML'))
-// });
+
 
 
 
