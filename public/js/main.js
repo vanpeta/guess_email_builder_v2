@@ -60,21 +60,21 @@ function addEventsHref () {
 function addData (i) {
 	switch (i) {
 		case '0':
-			return row1images = '<td width="100%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="582" style="display: block" /></a></td>'
+			return row1images = '<td width="100%"><a href="'+href[0]+'"><img class="responsive" id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="582" style="display: block" /></a></td>'
 		break;
 		case '1':
-			return row2images = '<td width="50%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="291" style="display: block" /></a></td><td width="50%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="291" style="display: block" /></a></td>'
+			return row2images = '<td width="50%"><a href="'+href[0]+'"><img class="responsive" id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="291" style="display: block" /></a></td><td width="50%"><a href="'+href[1]+'"><img class="responsive" id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="291" style="display: block" /></a></td>'
 		break;
 		case '2':
-			return row3images = '<td width="33.33%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="194" style="display: block" /></a></td>'
+			return row3images = '<td width="33.33%"><a href="'+href[0]+'"><img class="responsive" id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[1]+'"><img class="responsive" id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="194" style="display: block" /></a></td><td width="33.33%"><a href="'+href[2]+'"><img class="responsive" id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="194" style="display: block" /></a></td>'
 		break;
 		case '3':
-			return row4images = '<td width="25%"><a href="'+href[0]+'"><img id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[1]+'"><img id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[2]+'"><img id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[3]+'"><img id="image3" alt="'+alt[3]+'" src="'+url[3]+'" width="145.5" style="display: block" /></a></td>'
+			return row4images = '<td width="25%"><a href="'+href[0]+'"><img class="responsive" id="image0" alt="'+alt[0]+'" src="'+url[0]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[1]+'"><img class="responsive" id="image1" alt="'+alt[1]+'" src="'+url[1]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[2]+'"><img class="responsive" id="image2" alt="'+alt[2]+'" src="'+url[2]+'" width="145.5" style="display: block" /></a></td><td width="25%"><a href="'+href[3]+'"><img class="responsive" id="image3" alt="'+alt[3]+'" src="'+url[3]+'" width="145.5" style="display: block" /></a></td>'
 		break
 	}
 }
 //HTML Row Code
-var contentRowAndTable = '<tr class="'+rowNum+'"><td><table width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
+var contentRowAndTable = '<tr class="'+rowNum+'"><td><table class="responsive" width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
 
 //Adding new row
 $('#newRowButton').on('click', function () {
@@ -84,7 +84,7 @@ $('#newRowButton').on('click', function () {
 	$('.content > tbody:last-child').append(contentRowAndTable);
 	counter++;
 	rowNum = 'row'+counter;
-	contentRowAndTable = '<tr class="'+rowNum+'"><td><table width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
+	contentRowAndTable = '<tr class="'+rowNum+'"><td><table class="responsive" width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
 });
 //Making sure one brand is chosen and triggering send image to backend
 function validator (image) {
