@@ -6,12 +6,17 @@ var rowNum ='row'+counter;
 var url = [];
 var alt = [];
 var href = [];
+//HTML Row Code
+var contentRowAndTable = '<tr class="'+rowNum+'"><td><table class="responsive" width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
 //Generating Calendar
 calendar.datepicker({
 	onSelect: function (date) {
 		$('.rowPicker').removeClass('hide');
 		$('#buttons').removeClass('hide');
 		$('#calendar').addClass('hide');
+		$('.content > tbody:last-child').append(contentRowAndTable);
+		counter++;
+		rowNum = 'row'+counter;
 	}
 });
 //Cleaning checkboxes when clicked on them
@@ -73,9 +78,6 @@ function addData (i) {
 		break
 	}
 }
-//HTML Row Code
-var contentRowAndTable = '<tr class="'+rowNum+'"><td><table class="responsive" width="582" border="0" cellspacing="0" cellpadding="0"><tr class="imagesContainer"></tr></table></td></tr>';
-
 //Adding new row
 $('#newRowButton').on('click', function () {
 	numImages = null;

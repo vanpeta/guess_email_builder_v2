@@ -2,8 +2,6 @@ require('dotenv').load();
 var Client = require('ftp');
 var sslRootCAs = require('ssl-root-cas/latest');
 
-
-
 module.exports = {
 	getInfo: getInfo,
 	postImage: postImage

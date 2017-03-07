@@ -7,6 +7,10 @@ router.get('/', function (req, res, next) {
   res.sendfile('public/index.html');
 })
 
+router.get('/alt', function (req, res, next) {
+  res.sendfile('public/alt.html');
+})
+
 /*Connect to ftp */
 router.post('/connect', ftpController.getInfo);
 /* Upload to GUESS server */

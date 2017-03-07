@@ -4,6 +4,11 @@ body{
 	text-align: center;
 	font-family: GuessFont, 'Century Gothic', Futura, Arial, sans serif;
 }
+h1 {
+	left: calc(50% - 155px);
+	position: fixed;
+	display: block;
+}
 #panel {
 	display: inline-block;
 	width: 49%;
