@@ -9,7 +9,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	</head>
 	<body>
-		{{1+1}}
+		<div ng-controller="emailController as vm">
+			{{vm.test}}
+		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/controllers/emailController.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>
