@@ -1,6 +1,7 @@
 (function emailController() {
 	angular.module('guessBuilderV2')
 		.controller("emailController", emailController)
+		
 
 		emailController.$inject = [];
 
@@ -8,7 +9,7 @@
 			var vm = this;
 			vm.showBrands = "";
 			vm.showMenu = showMenu;
-			vm.brand = "";
+			vm.email = {}
 			vm.selectBrand = selectBrand;
 			vm.selected = "";
 
@@ -21,11 +22,10 @@
 			}
 
 			function selectBrand(selectedBrand) {
-				vm.brand = selectedBrand.target.textContent;
+				vm.email.brand = selectedBrand.target.textContent;
 				for (var i = 0; i < document.getElementsByClassName('show').length; i++) {
 					document.getElementsByClassName('show')[i].id = "";
 				}
-
 				selectedBrand.target.id = "selected"
 			}
 

@@ -12,7 +12,8 @@ router.get('/alt', function (req, res, next) {
 })
 
 /*Connect to ftp */
-router.post('/connect', ftpController.getInfo);
+router.get('/ftp', ftpController.getFiles);
+router.post('/ftp', ftpController.postFiles);
 /* Upload to GUESS server */
 // router.post('/upload', ftpController.postImage);
 

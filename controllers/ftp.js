@@ -3,8 +3,8 @@ var Client = require('ftp');
 var sslRootCAs = require('ssl-root-cas/latest');
 
 module.exports = {
-	getInfo: getInfo,
-	postImage: postImage
+	getFiles: getFiles,
+	postFiles: postFiles
 }
 
 var ftpConfig = {
@@ -15,7 +15,7 @@ var ftpConfig = {
 	password: process.env.password,
 }
 
-function getInfo (req, res, next) {
+function postFiles (req, res, next) {
 	var image = req.body.image;
 	console.log('image=', image);	
 	var imageBuffer = Buffer.from(image, 'base64');
@@ -93,6 +93,28 @@ function getInfo (req, res, next) {
 }
 
 
-function postImage (req, res, next) {
+function getFiles (req, res, next) {
+	var image = req.body.image;
+	console.log('image=', image);	
+	var imageBuffer = Buffer.from(image, 'base64');
+	console.log(imageBuffer);
+	var brand = req.body.brand;
+	console.log('brand=', brand);
+	var year = req.body.year;
+	console.log('year=', year);
+	var month = req.body.month;
+	console.log('month=', month);
+	var day = req.body.day;
+	console.log('day=', day);
+	var imageName = req.body.imageName;
+	console.log(req.body.imageName);
+	var path = '/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day;
+	var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
 	res.json({res: "working"})
 }
+
+
+
+
+
+
