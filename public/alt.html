@@ -5,11 +5,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=4" />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="autolink" content="no" />
+		<link rel="stylesheet" href="/css/alt.css">
 		<title>GUESS email builder v2</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	</head>
 	<body>
 		<div ng-controller="emailController as vm">
+			<div id="navBar">
+				<ul>
+					<li class="navBar-options">
+						Brands
+						<ul id="brands-submenu">
+							<li>Guess</li>
+							<li>Guess Factory</li>
+							<li>G by Guess</li>
+							<li>Guess Kids</li>
+							<li>Marciano</li>
+						</ul>
+					</li>
+					<li class="navBar-options">
+						Date
+					</li>
+					<li id="logo">
+						<img alt="logo" id="logoImage" src="http://content.guess.com/GuessUS/Guess/headersFooters/2017/guessLogo.png">
+					</li>
+				</ul>
+			</div>
 			{{vm.test}}
 		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>

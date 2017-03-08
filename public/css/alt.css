@@ -1,0 +1,51 @@
+body {
+	margin: 0px;
+}
+#navBar {
+	height: 60px;
+	background-color: #000000;
+	position: fixed;
+	width: 100%
+}
+#navBar ul {
+	list-style: none;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+.navBar-options {
+	color: #ffffff;
+	font-size: 16px;
+	font-family: 'Century Gothic', Futura, Arial, sans serif;
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+	cursor: pointer;
+	line-height: 3.8em;
+	vertical-align: top;
+}
+.navBar-options:hover {
+	background-color: #4c4c4c
+}
+#brands-submenu {
+	display: none;
+}
+#brands-submenu li {
+	display: block;
+	width: 150px;
+	height: 50px;
+	background-color: #4c4c4c;
+	border-bottom: solid 1px #ffffff;
+	line-height: 3.2em;
+}
+#brands-submenu li:hover {
+
+}
+#logo {
+	float: left;
+	width: 150px;
+
+}
+#logoImage {
+	width: 150px;
+}
