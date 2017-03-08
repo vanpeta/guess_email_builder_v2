@@ -7,31 +7,37 @@
 		<meta name="autolink" content="no" />
 		<link rel="stylesheet" href="/css/alt.css">
 		<title>GUESS email builder v2</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	</head>
 	<body>
 		<div ng-controller="emailController as vm">
 			<div id="navBar">
 				<ul>
-					<li class="navBar-options">
+					<li class="navBar-options" ng-click="vm.showMenu()">
 						Brands
 						<ul id="brands-submenu">
-							<li>Guess</li>
-							<li>Guess Factory</li>
-							<li>G by Guess</li>
-							<li>Guess Kids</li>
-							<li>Marciano</li>
+							<li id="vm.selected" class={{vm.showBrands}} ng-click="vm.selectBrand($event)">Guess</li>
+							<li id="vm.selected" class={{vm.showBrands}} ng-click="vm.selectBrand($event)">Guess Factory</li>
+							<li id="vm.selected" class={{vm.showBrands}} ng-click="vm.selectBrand($event)">G by Guess</li>
+							<li id="vm.selected" class={{vm.showBrands}} ng-click="vm.selectBrand($event)">Guess Kids</li>
+							<li id="vm.selected" class={{vm.showBrands}} ng-click="vm.selectBrand($event)">Marciano</li>
 						</ul>
 					</li>
 					<li class="navBar-options">
 						Date
+						<div id="datePicker">
+						</div>
 					</li>
 					<li id="logo">
 						<img alt="logo" id="logoImage" src="http://content.guess.com/GuessUS/Guess/headersFooters/2017/guessLogo.png">
 					</li>
 				</ul>
 			</div>
-			{{vm.test}}
+			<div style="position: absolute;">
+			{{vm.brand}}
+			</div>
 		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/controllers/emailController.js" type="text/javascript" charset="utf-8"></script>

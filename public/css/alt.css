@@ -31,11 +31,11 @@ body {
 	display: none;
 }
 #brands-submenu li {
-	display: block;
+	display: none;
 	width: 150px;
 	height: 50px;
 	background-color: #4c4c4c;
-	border-bottom: solid 1px #ffffff;
+	border-top: solid 1px #ffffff;
 	line-height: 3.2em;
 }
 #brands-submenu li:hover {
@@ -48,4 +48,11 @@ body {
 }
 #logoImage {
 	width: 150px;
+}
+.show {
+	display: block !important;
+}
+#selected {
+	background-color: #fcfa80 !important;
+	color: #000000 !important;
 }
