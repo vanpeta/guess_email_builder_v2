@@ -20,8 +20,10 @@
 			vm.selectBrand = selectBrand;
 			vm.selected = "";
 			vm.rowsCounter = 1
+			vm.imageCounter;
+			vm.createImages = createImages;
 			vm.image = {};
-			vm.images = [vm.image];
+			vm.images = [];
 			vm.email.rows = [vm.images];
 
 			function showMenu() {
@@ -56,6 +58,18 @@
 					vm.email.date = date
 				}
 			})
+
+			function createImages () {
+				vm.images = [];
+				for (var i = 0; i < vm.imageCounter; i++) {
+					vm.image = {
+						alt : "alt"+i,
+						href : "href"+i,
+						src : "src"+i
+					}
+					vm.images.push(vm.image);
+				}
+			}
 
 		}
 })();

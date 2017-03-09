@@ -45,15 +45,15 @@
 				</div>
 				<div>
 					<label for="numImages">number of images in this row:</label>
-					<input type="number" id="numImages" ng-model="vm.images.length" value="1">
+					<input type="number" id="numImages" ng-model="vm.imageCounter" ng-change="vm.createImages()" value="1">
 				</div>
-				<div class="imageSettings" ng-repeat="image in vm.images track by $index">
-					<label for="'alt'+vm.images.indexOf(this)">alt</label>
-					<input type="text" id="'alt'+vm.images.indexOf(this)" name="'alt'+vm.images.indexOf(this)" ng-model="image.alt">
-					<label for="href">href</label>
-					<input type="text" id="href" name=href ng-model="image.href">
-					<label for="src">src</label>
-					<input type="text" id="src" name="src" ng-model="image.src">
+				<div class="imageSettings" ng-repeat="image in vm.images">
+					<label for={{image.alt}}>alt</label>
+					<input type="text" id={{image.alt}} name={{image.alt}} ng-model="image.alt">
+					<label for={{image.href}}>href</label>
+					<input type="text" id={{image.href}} name={{image.href}} ng-model="image.href">
+					<label for={{image.src}}>src</label>
+					<input type="text" id={{image.src}} name={{image.src}} ng-model="image.src">
 				</div>
 			</div>
 		</div>
