@@ -40,7 +40,21 @@
 			{{vm.email}}
 			</div>
 			<div style="position: absolute; margin-top: 15%" ng-show="(vm.email.date && vm.email.brand)">
-				row #{{vm.rowsCounter}}
+				<div class="rowNumber">
+					row #{{vm.rowsCounter}}
+				</div>
+				<div>
+					<label for="numImages">number of images in this row:</label>
+					<input type="number" id="numImages" ng-model="vm.images.length" value="1">
+				</div>
+				<div class="imageSettings" ng-repeat="image in vm.images track by $index">
+					<label for="'alt'+vm.images.indexOf(this)">alt</label>
+					<input type="text" id="'alt'+vm.images.indexOf(this)" name="'alt'+vm.images.indexOf(this)" ng-model="image.alt">
+					<label for="href">href</label>
+					<input type="text" id="href" name=href ng-model="image.href">
+					<label for="src">src</label>
+					<input type="text" id="src" name="src" ng-model="image.src">
+				</div>
 			</div>
 		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>

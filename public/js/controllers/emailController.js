@@ -20,6 +20,9 @@
 			vm.selectBrand = selectBrand;
 			vm.selected = "";
 			vm.rowsCounter = 1
+			vm.image = {};
+			vm.images = [vm.image];
+			vm.email.rows = [vm.images];
 
 			function showMenu() {
 				$scope.showDatePicker = ""
@@ -53,5 +56,13 @@
 					vm.email.date = date
 				}
 			})
+
 		}
 })();
+
+
+
+
+
+
+
