@@ -22,9 +22,9 @@
 			vm.rowsCounter = 1
 			vm.imageCounter;
 			vm.createImages = createImages;
-			vm.image = {};
 			vm.images = [];
-			vm.email.rows = [vm.images];
+			vm.email.rows = [];
+			vm.addNewRow = addNewRow;
 
 			function showMenu() {
 				$scope.showDatePicker = ""
@@ -63,12 +63,18 @@
 				vm.images = [];
 				for (var i = 0; i < vm.imageCounter; i++) {
 					vm.image = {
+						imageNumber : i,
 						alt : "alt"+i,
 						href : "href"+i,
 						src : "src"+i
 					}
 					vm.images.push(vm.image);
 				}
+			}
+
+			function addNewRow () {
+				vm.rowsCounter++
+				vm.email.rows.push(vm.images);
 			}
 
 		}

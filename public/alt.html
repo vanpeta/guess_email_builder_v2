@@ -37,7 +37,7 @@
 				</ul>
 			</div>
 			<div style="position: absolute; margin-top: 10%">
-			{{vm.email}}
+			{{vm.email.rows}}
 			</div>
 			<div style="position: absolute; margin-top: 15%" ng-show="(vm.email.date && vm.email.brand)">
 				<div class="rowNumber">
@@ -49,11 +49,14 @@
 				</div>
 				<div class="imageSettings" ng-repeat="image in vm.images">
 					<label for={{image.alt}}>alt</label>
-					<input type="text" id={{image.alt}} name={{image.alt}} ng-model="image.alt">
+					<input type="text" id={{image.alt}} name={{image.alt}} ng-model="vm.images[image.imageNumber].alt" >
 					<label for={{image.href}}>href</label>
-					<input type="text" id={{image.href}} name={{image.href}} ng-model="image.href">
+					<input type="text" id={{image.href}} name={{image.href}} ng-model="vm.images[image.imageNumber].href">
 					<label for={{image.src}}>src</label>
-					<input type="text" id={{image.src}} name={{image.src}} ng-model="image.src">
+					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
+				</div>
+				<div id="newRow" ng-click="vm.addNewRow()">
+					<button>New Row</button>
 				</div>
 			</div>
 		</div>
