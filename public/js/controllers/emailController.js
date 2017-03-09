@@ -1,19 +1,28 @@
 (function emailController() {
-	angular.module('guessBuilderV2')
+	angular
+		.module('guessBuilderV2')
 		.controller("emailController", emailController)
-		
 
-		emailController.$inject = [];
 
-		function emailController() {
+		emailController.$inject = ['$scope'];
+
+		function emailController($scope) {
 			var vm = this;
 			vm.showBrands = "";
 			vm.showMenu = showMenu;
-			vm.email = {}
+			vm.showDatePicker = "";
+			$scope.$watch('showDatePicker', function (showDatePicker) {
+				vm.showDatePicker = showDatePicker;
+				return showDatePicker;
+			});
+			vm.showCalendar = showCalendar;
+			vm.email = {};
 			vm.selectBrand = selectBrand;
 			vm.selected = "";
+			vm.rowsCounter = 1
 
 			function showMenu() {
+				$scope.showDatePicker = ""
 				if (vm.showBrands == "") {
 					vm.showBrands = "show";
 				}
@@ -29,6 +38,20 @@
 				selectedBrand.target.id = "selected"
 			}
 
+			function showCalendar () {
+				vm.showBrands = ""
+				if (!vm.showDatePicker) {
+					$scope.showDatePicker = "show";
+					vm.email.date = "";
+				}
+				else $scope.showDatePicker = "";
+				return vm.showDatePicker 
+			}
 
+			$scope.$watch('date', function (date) {
+				if (date) {
+					vm.email.date = date
+				}
+			})
 		}
 })();
