@@ -30,7 +30,7 @@
 			$scope.show = false;
 
 			function showModal () {
-				console.log('click')
+				console.log("controler", $scope.show)
 				$scope.show = true;
 			}
 			function showMenu() {
