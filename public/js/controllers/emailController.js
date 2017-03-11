@@ -4,9 +4,9 @@
 		.controller("emailController", emailController)
 
 
-		emailController.$inject = ['$scope'];
+		emailController.$inject = ['$scope', 'ftpService'];
 
-		function emailController($scope) {
+		function emailController($scope, ftpService) {
 			var vm = this;
 			vm.showBrands = "";
 			vm.showMenu = showMenu;
@@ -25,7 +25,14 @@
 			vm.images = [];
 			vm.email.rows = [];
 			vm.addNewRow = addNewRow;
+			vm.getUrl = getUrl;
+			vm.showModal = showModal;
+			$scope.show = false;
 
+			function showModal () {
+				console.log('click')
+				$scope.show = true;
+			}
 			function showMenu() {
 				$scope.showDatePicker = ""
 				if (vm.showBrands == "") {
@@ -75,7 +82,23 @@
 			function addNewRow () {
 				vm.rowsCounter++
 				vm.email.rows.push(vm.images);
+				vm.images = [];
 			}
+
+			function getUrl () {
+				console.log('upload or choose')
+				$( "#srcModal" ).dialog( "open" );
+			}
+
+			function uploadImage (image, location){
+				ftpService.convertTo64(image)
+				.then(function(res){
+					ftpService.uploadImage(res, location)
+					.then(function (res) {
+						console.log(res)
+					})
+				})
+			};
 
 		}
 })();

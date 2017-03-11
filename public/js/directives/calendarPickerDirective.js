@@ -1,4 +1,4 @@
-(function emailController() {
+(function jqdatepicker() {
 	angular
 		.module('guessBuilderV2')
 		.directive("jqdatepicker", jqdatepicker)
@@ -12,9 +12,10 @@
 						element.datepicker({
 							dateFormat: 'DD, d MM, yy',
 							onSelect: function (date) {
-								scope.date = date;
-								scope.showDatePicker = "";
-								scope.$apply();
+								scope.$apply(function () {
+									scope.date = date;
+									scope.showDatePicker = "";
+								});
 							}
 						})
 					})
