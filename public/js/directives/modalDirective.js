@@ -6,8 +6,9 @@
 		function modalDirective() {
 			return {
 				restrict: 'E',
-				scope: =,
-				template: 'modal-directive.html',
+				scope: '=',
+				transclude: true,
+				templateUrl: '/js/directives/modal-directive.html',
 				link: function (scope, element, attrs) {
 						$(function () {
 							console.log('directive', scope.show)

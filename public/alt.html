@@ -54,7 +54,7 @@
 					<input type="text" id={{image.href}} name={{image.href}} ng-model="vm.images[image.imageNumber].href">
 					<label for={{image.src}}>src</label>
 					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
-					<button id="srcUrlButton" href="#modal1" ng-click="vm.showModal()">Get src url</button>
+					<button id="srcUrlButton" ng-click="vm.showModal()">Get src url</button>
 					<modal-directive ng-show="show">
 					</modal-irective>
 				</div>
@@ -65,6 +65,7 @@
 		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/directives/calendarPickerDirective.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/directives/modalDirective.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/services/ftpService.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/controllers/emailController.js" type="text/javascript" charset="utf-8"></script>
 	</body>
