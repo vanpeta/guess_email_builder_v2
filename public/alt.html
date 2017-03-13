@@ -56,8 +56,8 @@
 					<input type="text" id={{image.href}} name={{image.href}} ng-model="vm.images[image.imageNumber].href">
 					<label for={{image.src}}>src</label>
 					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
-					<button href="#modal1" role="button" class="btn btn-success" data-toggle="modal">Get src url</button>
-					<modal-directive lolo="modal1" modal-body="body" modal-footer="footer" modal-header="header" data-ng-click-right-button="myRightButton()">
+					<button href={{image.ref}} role="button" class="btn btn-success" data-toggle="modal">Get src url</button>
+					<modal-directive handler=vm.images[image.imageNumber].imageNumber modal-body="body" modal-header="header" data-ng-click-upload="upload()" data-ng-click-get-url="getUrl()">
 					</modal-directive>
 				</div>
 				<div id="newRow" ng-click="vm.addNewRow()">

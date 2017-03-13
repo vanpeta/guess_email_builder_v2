@@ -7,18 +7,16 @@
 			return {
 				restrict: 'EA',
 				scope: {
-					title: '=modalTitle',
 					header: '=modalHeader',
-					body: '=modalBody',
-					footer: '=modalFooter',
-					callbackbuttonleft: '&ngClickLeftButton',
-					callbackbuttonright: '&ngClickRightButton',
-					handler: '=lolo'
+					callbackupload: '&ngClickUpload',
+					callbackgeturl: '&ngClickGetUrl',
+					handler: '=handler'
 				},
 				transclude: true,
 				templateUrl: '/js/myModal/modal-directive.html',
-				controlke: function ($scope) {
-					$scope.handler = 'pop'
+				controller: function ($scope) {
+					console.log($scope)
+					// $scope.handler = 'pop'
 				}
 			}
 		}

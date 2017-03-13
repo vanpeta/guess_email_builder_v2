@@ -25,16 +25,17 @@
 			vm.images = [];
 			vm.email.rows = [];
 			vm.addNewRow = addNewRow;
-			vm.getUrl = getUrl;
-			vm.showModal = showModal;
+			$scope.upload = upload;
+			$scope.getUrl = getUrl;
 			$scope.show = false;
-			$scope.header = 'Put here your header';
-    	$scope.body = 'Put here your body';
-    	$scope.footer = 'Put here your footer';
+			$scope.header = 'Upload a new photo or get url of an existing one from the server';
 
-			function showModal () {
-				$scope.show = true;
-				console.log($scope.show)
+			function upload() {
+				console.log('click')
+			}
+
+			function getUrl() {
+				console.log(' getting url')
 			}
 
 			function showMenu() {
@@ -78,7 +79,7 @@
 						alt : "alt"+i,
 						href : "href"+i,
 						src : "src"+i,
-						ref: "ref"+i
+						ref: "#"+i
 					}
 					vm.images.push(vm.image);
 				}
@@ -90,10 +91,6 @@
 				vm.images = [];
 			}
 
-			function getUrl () {
-				console.log('upload or choose')
-				$( "#srcModal" ).dialog( "open" );
-			}
 
 			function uploadImage (image, location){
 				ftpService.convertTo64(image)
