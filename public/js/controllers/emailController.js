@@ -28,11 +28,15 @@
 			vm.getUrl = getUrl;
 			vm.showModal = showModal;
 			$scope.show = false;
+			$scope.header = 'Put here your header';
+    	$scope.body = 'Put here your body';
+    	$scope.footer = 'Put here your footer';
 
 			function showModal () {
-				console.log("controler", $scope.show)
 				$scope.show = true;
+				console.log($scope.show)
 			}
+
 			function showMenu() {
 				$scope.showDatePicker = ""
 				if (vm.showBrands == "") {
@@ -73,7 +77,8 @@
 						imageNumber : i,
 						alt : "alt"+i,
 						href : "href"+i,
-						src : "src"+i
+						src : "src"+i,
+						ref: "ref"+i
 					}
 					vm.images.push(vm.image);
 				}

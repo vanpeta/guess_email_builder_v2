@@ -9,7 +9,9 @@
 		<title>GUESS email builder v2</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>	  
 	</head>
 	<body>
@@ -54,9 +56,9 @@
 					<input type="text" id={{image.href}} name={{image.href}} ng-model="vm.images[image.imageNumber].href">
 					<label for={{image.src}}>src</label>
 					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
-					<button id="srcUrlButton" ng-click="vm.showModal()">Get src url</button>
-					<modal-directive ng-show="show">
-					</modal-irective>
+					<button href="#modal1" role="button" class="btn btn-success" data-toggle="modal">Get src url</button>
+					<modal-directive lolo="modal1" modal-body="body" modal-footer="footer" modal-header="header" data-ng-click-right-button="myRightButton()">
+					</modal-directive>
 				</div>
 				<div id="newRow" ng-click="vm.addNewRow()">
 					<button>New Row</button>
@@ -65,7 +67,7 @@
 		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/directives/calendarPickerDirective.js" type="text/javascript" charset="utf-8"></script>
-		<script src="./js/directives/modalDirective.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/myModal/myModalDirective.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/services/ftpService.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/controllers/emailController.js" type="text/javascript" charset="utf-8"></script>
 	</body>
