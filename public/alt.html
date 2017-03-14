@@ -59,7 +59,7 @@
 					<label for={{image.src}}>src</label>
 					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
 					<button href={{image.ref}} class="btn btn-success" data-toggle="modal">Get src url</button>
-					<button class="btn btn-success" ng-model="vm.imageToUpload" ngf-select="upload(vm.imageToUpload)" ngf-no-object-url="true" ngf-pattern="'image/*'" ngf-accept="'image/*'">New img</button>
+					<button class="btn btn-success" id={{image.src}} ng-model="vm.imageToUpload" ngf-select="upload(vm.imageToUpload, $event)" ngf-no-object-url="true" ngf-pattern="'image/*'" ngf-accept="'image/*'">New img</button>
 					<modal-directive handler=vm.images[image.imageNumber].imageNumber modal-header="header" data-ng-click-get-url="getUrl()">
 					</modal-directive>
 				</div>
