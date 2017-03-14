@@ -32,7 +32,35 @@
 			vm.imageToUpload;
 
 			function upload(image) {
-				console.log(image)
+				var name = image.name.replace(/\s+/g, '_');
+				var location = {
+					brand: vm.email.brand.replace(/\s+/g, ''),
+					year: 0,
+					month: 0,
+					day: 0
+				}
+				$scope.$watch('datePicked', function (datePicked) {
+					location.year = datePicked.getFullYear();
+					location.month = datePicked.toLocaleString('en-us', {month: 'long'});
+					var monthNumber = datePicked.getMonth()+1;
+					// var imageName = $('#'+id).val().split('\\').pop().replace(/\s+/g, '_');
+					if (monthNumber < 10) {
+						monthNumber = '0'+ monthNumber
+					}
+					var day = datePicked.getDate();
+					if (day < 10) {
+						day = '0'+ day;
+					}
+					location.day = monthNumber + '.' + day;
+				});
+				ftpService.convertTo64(image)
+				.then(function (res) {
+					ftpService
+					.uploadImage(res, location, name)
+					.then(function (response) {
+						console.log(response)
+					})
+				})
 			}
 
 			function getUrl() {
@@ -91,17 +119,6 @@
 				vm.email.rows.push(vm.images);
 				vm.images = [];
 			}
-
-
-			function uploadImage (image, location){
-				ftpService.convertTo64(image)
-				.then(function(res){
-					ftpService.uploadImage(res, location)
-					.then(function (res) {
-						console.log(res)
-					})
-				})
-			};
 
 		}
 })();

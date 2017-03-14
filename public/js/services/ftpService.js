@@ -21,14 +21,14 @@
 				})
 			}
 
-			function uploadImage (image, location) {
-				console.log('service')
+			function uploadImage (image, location, name) {
 				return $http({
 					method: 'POST',
 					url: '/ftp',
 					data: {
 						image: image,
-						location: location
+						location: location,
+						imageName: name
 					}
 				})
 			}

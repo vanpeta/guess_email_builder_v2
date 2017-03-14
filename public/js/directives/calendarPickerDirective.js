@@ -15,6 +15,7 @@
 								scope.$apply(function () {
 									scope.date = date;
 									scope.showDatePicker = "";
+									scope.datePicked = element.datepicker('getDate');
 								});
 							}
 						})
