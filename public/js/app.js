@@ -1,3 +1,3 @@
 (function() {
-	angular.module('guessBuilderV2', [])
+	angular.module('guessBuilderV2', ['ngFileUpload'])
 })();

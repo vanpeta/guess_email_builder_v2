@@ -4,9 +4,9 @@
 		.controller("emailController", emailController)
 
 
-		emailController.$inject = ['$scope', 'ftpService'];
+		emailController.$inject = ['$scope', 'ftpService', 'Upload'];
 
-		function emailController($scope, ftpService) {
+		function emailController($scope, ftpService, Upload) {
 			var vm = this;
 			vm.showBrands = "";
 			vm.showMenu = showMenu;
@@ -25,13 +25,14 @@
 			vm.images = [];
 			vm.email.rows = [];
 			vm.addNewRow = addNewRow;
-			$scope.upload = upload;
 			$scope.getUrl = getUrl;
 			$scope.show = false;
 			$scope.header = 'Upload a new photo or get url of an existing one from the server';
+			$scope.upload = upload;
+			vm.imageToUpload;
 
-			function upload() {
-				console.log('click')
+			function upload(image) {
+				console.log(image)
 			}
 
 			function getUrl() {

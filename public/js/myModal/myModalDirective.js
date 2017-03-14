@@ -6,18 +6,15 @@
 		function modalDirective() {
 			return {
 				restrict: 'EA',
+				require: '^ngModel',
 				scope: {
-					header: '=modalHeader',
-					callbackupload: '&ngClickUpload',
-					callbackgeturl: '&ngClickGetUrl',
-					handler: '=handler'
-				},
+						header: '=modalHeader',
+						callbackgeturl: '&ngClickGetUrl',
+						handler: '=handler'
+					},
 				transclude: true,
-				templateUrl: '/js/myModal/modal-directive.html',
-				controller: function ($scope) {
-					console.log($scope)
-					// $scope.handler = 'pop'
-				}
+				templateUrl: '/js/myModal/modal-directive.html'
 			}
 		}
 })();
+

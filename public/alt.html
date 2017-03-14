@@ -12,7 +12,9 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>	  
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+    <script src="/ng-file-upload/dist/ng-file-upload.min.js"></script>
 	</head>
 	<body>
 		<div ng-controller="emailController as vm">
@@ -56,8 +58,9 @@
 					<input type="text" id={{image.href}} name={{image.href}} ng-model="vm.images[image.imageNumber].href">
 					<label for={{image.src}}>src</label>
 					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
-					<button href={{image.ref}} role="button" class="btn btn-success" data-toggle="modal">Get src url</button>
-					<modal-directive handler=vm.images[image.imageNumber].imageNumber modal-body="body" modal-header="header" data-ng-click-upload="upload()" data-ng-click-get-url="getUrl()">
+					<button href={{image.ref}} class="btn btn-success" data-toggle="modal">Get src url</button>
+					<button class="btn btn-success" ng-model="vm.imageToUpload" ngf-select="upload(vm.imageToUpload)" ngf-no-object-url="true" ngf-pattern="'image/*'" ngf-accept="'image/*'">New img</button>
+					<modal-directive handler=vm.images[image.imageNumber].imageNumber modal-header="header" data-ng-click-get-url="getUrl()">
 					</modal-directive>
 				</div>
 				<div id="newRow" ng-click="vm.addNewRow()">
