@@ -60,8 +60,7 @@ function postFiles (req, res, next) {
 					console.log('inside 1st cwd error 505')
 					c.mkdir(path, true, function (err) {
 						if (err) {
-							console.log('inside mkdir error')
-							return res.json(err);
+							return res.json({err: err, message: 'inside mkdir error'});
 						}
 						c.put(imageBuffer, path+'/'+imageName, function (err) {
 							if (err) {
@@ -70,13 +69,11 @@ function postFiles (req, res, next) {
 							}
 							c.cwd(path, function (err, currentDir) {
 								if (err) {
-									console.log('inside 2nd cwd error')
-									return res.json(err);
+									return res.json({err: err, message: 'inside 2nd cwd error'});
 								}
 								c.list(function (err, list) {
 									if (err) {
-										console.log('inside list after mkdir and cwd to it')
-										return res.json(err);
+										return res.json({err: err, message: 'inside list after mkdir and cwd to it'});
 									}
 									return res.json({filesInFolder: list, url: url});
 								})
@@ -97,7 +94,7 @@ function postFiles (req, res, next) {
 					c.list(function (err, list) {
 					if (err) {
 						console.log('inside list without mkdir')
-						return res.json(err);
+						return res.json({err: err, message: 'inside list without mkdir'});
 					}
 					res.json({filesInFolder: list, url: url})
 					c.end();
@@ -127,6 +124,18 @@ function getFiles (req, res, next) {
 	console.log(req.body.imageName);
 	var path = '/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day;
 	var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
+	var c = new Client();
+	//next line needs to be removed for security and find out how to do it without it. You will the next error { [Error: unable to verify the first certificate] code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' } 
+	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+	c.connect(ftpConfig);
+	c.on('ready', function () {
+		c.list(function (err, list) {
+			if (err) {
+				console.log('inside first list')
+				return res.json(err);
+			}
+		})
+	})
 	res.json({res: "working"})
 }
 
