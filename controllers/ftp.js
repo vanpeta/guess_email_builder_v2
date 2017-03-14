@@ -108,36 +108,48 @@ function postFiles (req, res, next) {
 
 
 function getFiles (req, res, next) {
-	var image = req.body.image;
-	console.log('image=', image);	
-	var imageBuffer = Buffer.from(image, 'base64');
-	console.log(imageBuffer);
-	var brand = req.body.brand;
-	console.log('brand=', brand);
-	var year = req.body.year;
-	console.log('year=', year);
-	var month = req.body.month;
-	console.log('month=', month);
-	var day = req.body.day;
-	console.log('day=', day);
-	var imageName = req.body.imageName;
-	console.log(req.body.imageName);
-	var path = '/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day;
-	var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
+	// var image = req.body.image;
+	// console.log('image=', image);	
+	// var imageBuffer = Buffer.from(image, 'base64');
+	// console.log(imageBuffer);
+	// var brand = req.body.brand;
+	// console.log('brand=', brand);
+	// var year = req.body.year;
+	// console.log('year=', year);
+	// var month = req.body.month;
+	// console.log('month=', month);
+	// var day = req.body.day;
+	// console.log('day=', day);
+	// var imageName = req.body.imageName;
+	// console.log(req.body.imageName);
+	// var path = '/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day;
+	// var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
 	var c = new Client();
 	//next line needs to be removed for security and find out how to do it without it. You will the next error { [Error: unable to verify the first certificate] code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' } 
 	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 	c.connect(ftpConfig);
 	c.on('ready', function () {
-		c.list(function (err, list) {
+		c.cwd('/43877/GuessUS/', function (err, currentDir) {
 			if (err) {
-				console.log('inside first list')
-				return res.json(err);
+				return res.json({
+					err: err,
+					message: 'something went wrong changing to home directory'
+				})
 			}
+			c.list(function (err, list) {
+				if (err) {
+					console.log('inside first list')
+					return res.json({
+						err: err,
+						message: 'inside first list'
+					});
+				}
+				res.json({filesInFolder: list})
+				c.end();
+			})
 		})
 	})
-	res.json({res: "working"})
-}
+};
 
 
 

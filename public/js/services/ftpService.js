@@ -33,10 +33,18 @@
 				})
 			}
 
+			function getServerinfo () {
+				return $http({
+					method: 'GET',
+					url: '/ftp'
+				})
+			}
+
 
 			return {
 				uploadImage: uploadImage,
-				convertTo64: convertTo64
+				convertTo64: convertTo64,
+				getServerinfo: getServerinfo
 			}
 
 		}

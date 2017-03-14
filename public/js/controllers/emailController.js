@@ -112,7 +112,11 @@
 			}
 
 			function getUrl() {
-				console.log(' getting url')
+				console.log(' getting ftp info')
+				ftpService.getServerinfo()
+				.then(function (res) {
+					console.log(res.data.filesInFolder);
+				})
 			}
 
 			$scope.$watch('date', function (date) {
