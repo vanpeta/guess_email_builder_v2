@@ -47,7 +47,7 @@ function postFiles (req, res, next) {
 	// var imageName = req.body.imageName;
 	// console.log(req.body.imageName);
 	// var path = '/43877/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day;
-	var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
+	// var url = 'http://content.guess.com/GuessUS/'+brand+'/Emails/'+year+'/'+month+'/'+day+'/'+imageName;
 	var c = new Client();
 	//next line needs to be removed for security and find out how to do it without it. You will the next error { [Error: unable to verify the first certificate] code: 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' } 
 	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
