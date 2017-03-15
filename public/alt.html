@@ -47,6 +47,7 @@
 				<div class="rowNumber">
 					row #{{vm.rowsCounter}}
 				</div>
+				<files-collection collection='fileCollection'></files-collection>
 				<div>
 					<label for="numImages">number of images in this row:</label>
 					<input type="number" id="numImages" ng-model="vm.imageCounter" ng-change="vm.createImages()" value="1">
@@ -58,9 +59,9 @@
 					<input type="text" id={{image.href}} name={{image.href}} ng-model="vm.images[image.imageNumber].href">
 					<label for={{image.src}}>src</label>
 					<input type="text" id={{image.src}} name={{image.src}} ng-model="vm.images[image.imageNumber].src">
-					<button href={{image.ref}} class="btn btn-success" data-toggle="modal">Get src url</button>
+					<button href={{image.ref}} class="btn btn-success" data-toggle="modal" ng-click="vm.getHome()">Get img</button>
 					<button class="btn btn-success" id={{image.src}} ng-model="vm.imageToUpload" ngf-select="upload(vm.imageToUpload, $event)" ngf-no-object-url="true" ngf-pattern="'image/*'" ngf-accept="'image/*'">New img</button>
-					<modal-directive handler=vm.images[image.imageNumber].imageNumber modal-header="header" data-ng-click-get-url="getUrl()">
+					<modal-directive collection="fileCollection" handler=vm.images[image.imageNumber].imageNumber modal-header="header" data-ng-click-get-url="getUrl()">
 					</modal-directive>
 				</div>
 				<div id="newRow" ng-click="vm.addNewRow()">
@@ -70,6 +71,8 @@
 		</div>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/directives/calendarPickerDirective.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/directives/filesCollectionDirective.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/directives/ftpFileDirective.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/myModal/myModalDirective.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/services/ftpService.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/controllers/emailController.js" type="text/javascript" charset="utf-8"></script>

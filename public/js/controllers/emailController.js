@@ -21,11 +21,13 @@
 			vm.images = [];
 			vm.addNewRow = addNewRow;
 			vm.email.rows = [];
-			$scope.getUrl = getUrl;
 			$scope.show = false;
 			$scope.header = 'Select an image from the server';
 			$scope.upload = upload;
 			vm.imageToUpload;
+			vm.getHome = getHome;
+			$scope.getUrl = getUrl;
+			$scope.fileCollection;
 
 			function showMenu () {
 				$scope.showDatePicker = ""
@@ -111,12 +113,15 @@
 				vm.images = [];
 			}
 
-			function getUrl() {
-				console.log(' getting ftp info')
+			function getHome () {
 				ftpService.getServerinfo()
 				.then(function (res) {
-					console.log(res.data.filesInFolder);
+					$scope.fileCollection = res.data.filesInFolder
 				})
+			}
+
+			function getUrl () {
+				console.log('getting url')
 			}
 
 			$scope.$watch('date', function (date) {
