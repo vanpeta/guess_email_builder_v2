@@ -10,15 +10,7 @@
 				scope: {
 					file: '='
 				},
-				template: '<div class="file"><div><div class="arrow-right"></div>{{file.name}}</div></div>',
-				// link: function (scope, element, attrs) {
-				// 	var collectionSt = "<collection collection='scope.file'></collection>";
-				// 	if (angular.isArray(scope.file)) {
-				// 		$compile(collectionSt)(scope, function(cloned, scope) {
-				// 			element.append(cloned)
-				// 		});
-				// 	}
-				// }
+				templateUrl: '/js/directives/ftpFileDirectiveTemplate.html'
 			}
 		}
 })();
