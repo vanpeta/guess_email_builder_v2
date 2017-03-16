@@ -8,9 +8,11 @@
 				restrict: "E",
 				replace: true,
 				scope: {
-					collection: '='
+					collection: '=',
+					getFolder: '='
+
 				},
-				template: "<div><ftp-file ng-repeat='file in collection' file='file'></ftp-file></div>",
+				template: "<div><ftp-file ng-repeat='file in collection' file='file' data-ng-click-get-folder='getFolder()'></ftp-file></div>",
 			}
 		}
 })();

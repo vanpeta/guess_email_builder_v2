@@ -28,6 +28,7 @@
 			vm.getHome = getHome;
 			$scope.getUrl = getUrl;
 			$scope.fileCollection;
+			$scope.getFolder = getFolder;
 
 			function showMenu () {
 				$scope.showDatePicker = ""
@@ -107,6 +108,14 @@
 					})
 				})
 			};
+
+			function getFolder () {
+				console.log('getFolder')
+				// ftpService.getServerInfo()
+				// .then(function (res) {
+				// 	$scope.fileCollerction = res.data.filesInfolder
+				// })
+			}
 
 			function addNewRow () {
 				vm.rowsCounter++

@@ -8,7 +8,8 @@
 				restrict: "E",
 				replace: true,
 				scope: {
-					file: '='
+					file: '=',
+					callbackFolder: '&ngClickGetFolder'
 				},
 				templateUrl: '/js/directives/ftpFileDirectiveTemplate.html'
 			}
